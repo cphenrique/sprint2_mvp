@@ -1,3 +1,0 @@
-[2023-09-11 22:17:56,078] DEBUG del_carro() L92   Deletando dados sobre carro #1 - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L92  
-[2023-09-11 22:17:56,079] WARNING del_carro() L106  Erro ao deletar carro #'1', Carro não encontrado na base - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L106 
-[2023-09-11 22:17:56,080] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:56] "[33mDELETE /carro?id=1 HTTP/1.1[0m" 404 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 

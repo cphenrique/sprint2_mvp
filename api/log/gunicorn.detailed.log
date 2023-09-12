@@ -1,0 +1,6 @@
+[2023-09-12 08:49:13,875] DEBUG add_carro() L43   Adicionando o carro '450 na base de dados - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L43  
+[2023-09-12 08:49:13,892] DEBUG add_carro() L51   450 adicionado com sucesso. - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L51  
+[2023-09-12 08:49:13,893] INFO _log() L187  192.168.1.105 - - [12/Sep/2023 08:49:13] "POST /carro HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-12 08:49:18,824] DEBUG get_carros() L68   Coletando Carros - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L68  
+[2023-09-12 08:49:18,826] DEBUG get_carros() L78   2 Carros encontrados - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L78  
+[2023-09-12 08:49:18,826] INFO _log() L187  192.168.1.105 - - [12/Sep/2023 08:49:18] "GET /carros HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 

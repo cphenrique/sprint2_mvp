@@ -1,0 +1,62 @@
+[2023-09-11 22:12:51,066] INFO _log() L187   * Restarting with stat - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:13:11,745] INFO _log() L187   * Detected change in '/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/schemas/__init__.py', reloading - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:13:11,890] INFO _log() L187   * Restarting with stat - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:35,226] INFO _log() L187   * Detected change in '/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py', reloading - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:35,392] INFO _log() L187   * Restarting with stat - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:39,810] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:14:39] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:39,836] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:14:39] "[36mGET /openapi/static/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:39,841] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:14:39] "[36mGET /openapi/static/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:39,842] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:14:39] "[36mGET /openapi/static/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:40,027] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:14:40] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:14:52,600] ERROR log_exception() L1414 Exception on /carro [DELETE] - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask/app.py L1414
+Traceback (most recent call last):
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/flask_openapi3/scaffold.py", line 148, in view_func
+    response = func(**result)
+               ^^^^^^^^^^^^^^
+  File "/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py", line 90, in del_carro
+    carro_id = unquote(unquote(query.id))
+                       ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/parse.py", line 645, in unquote
+    if '%' not in string:
+       ^^^^^^^^^^^^^^^^^
+TypeError: argument of type 'int' is not iterable
+[2023-09-11 22:14:52,602] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:14:52] "[35m[1mDELETE /carro?id=1 HTTP/1.1[0m" 500 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:16:54,398] INFO _log() L187   * Detected change in '/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py', reloading - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:16:54,551] INFO _log() L187   * Restarting with stat - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:01,637] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:01] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:01,668] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:01] "[36mGET /openapi/static/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:01,669] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:01] "[36mGET /openapi/static/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:01,669] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:01] "[36mGET /openapi/static/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:01,866] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:01] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:04,899] DEBUG del_carro() L92   Deletando dados sobre carro #1 - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L92  
+[2023-09-11 22:17:04,922] DEBUG del_carro() L101  Deletado carro #1 - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L101 
+[2023-09-11 22:17:04,922] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:04] "DELETE /carro?id=1 HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:10,338] DEBUG del_carro() L92   Deletando dados sobre carro #1 - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L92  
+[2023-09-11 22:17:10,339] WARNING del_carro() L106  Erro ao deletar carro #'1', Carro não encontrado na base - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L106 
+[2023-09-11 22:17:10,339] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:10] "[33mDELETE /carro?id=1 HTTP/1.1[0m" 404 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:18,620] DEBUG get_carros() L67   Coletando Carros - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L67  
+[2023-09-11 22:17:18,622] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:18] "GET /carros HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:28,735] DEBUG add_carro() L42   Adicionando o carro '440 na base de dados - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L42  
+[2023-09-11 22:17:28,758] DEBUG add_carro() L50   440 adicionado com sucesso. - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L50  
+[2023-09-11 22:17:28,759] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:28] "POST /carro HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:37,439] DEBUG get_carros() L67   Coletando Carros - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L67  
+[2023-09-11 22:17:37,440] DEBUG get_carros() L77   1 Carros encontrados - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L77  
+[2023-09-11 22:17:37,440] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:37] "GET /carros HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 
+[2023-09-11 22:17:53,335] DEBUG del_carro() L92   Deletando dados sobre carro #1 - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L92  
+[2023-09-11 22:17:53,357] DEBUG del_carro() L101  Deletado carro #1 - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/app.py L101 
+[2023-09-11 22:17:53,358] INFO _log() L187  192.168.0.15 - - [11/Sep/2023 22:17:53] "DELETE /carro?id=1 HTTP/1.1" 200 - - call_trace=/home/phcosta/Documents/Pós Full Stack/Sprint 2/MVP/api/venv/lib/python3.11/site-packages/werkzeug/_internal.py L187 

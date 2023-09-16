@@ -8,7 +8,7 @@ from model.base import Base
 from model.carro import Carro
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)
-db_url = 'postgresql://postgres:postgres@localhost:5432/revenda'
+db_url = 'postgresql://postgres:postgres@postgres_container:5432/revenda'
 
 # cria a engine de conexão com o banco
 engine = create_engine(db_url, echo=False)

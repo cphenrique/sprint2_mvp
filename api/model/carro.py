@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Float, DateTime
+from sqlalchemy import Column, String, Integer, Float, DateTime
 from datetime import datetime
 from typing import Union
 
@@ -9,10 +9,10 @@ class Carro(Base):
     __tablename__ = 'carro'
 
     id = Column("carro_id", Integer, primary_key=True)
-    marca = Column(Integer)
-    modelo = Column(Integer)
-    ano = Column(Integer)
-    valor = Column(Integer)
+    marca = Column(String)
+    modelo = Column(String)
+    ano = Column(String)
+    valor = Column(String)
 
     dt_insercao = Column(DateTime, default=datetime.now())
 

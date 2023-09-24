@@ -57,7 +57,7 @@ dictConfig({
     "loggers": {
         "gunicorn.error": {
             "handlers": ["console", "error_file"],  #, email],
-            "level": "DEBUG",
+            "level": "INFO",
             "propagate": False,
         }
     },

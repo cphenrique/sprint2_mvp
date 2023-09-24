@@ -4,13 +4,13 @@
   --------------------------------------------------------------------------------------
 */
 const getList = async () => {
-  let url = 'https://parallelum.com.br/fipe/api/v1/carros/marcas';
+  let url = 'http://127.0.0.1:5000/carros';
   fetch(url, {
     method: 'get',
   })
     .then((response) => response.json())
     .then((data) => {
-      data.carros.forEach(carro => insertList(carro.codigo, carro.nome))
+      data.carros.forEach(carro => insertList(carro.id, carro.marca, carro.modelo, carro.ano, carro.valor))
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -30,17 +30,14 @@ getList()
   Função para colocar um projeto no servidor via requisição POST
   --------------------------------------------------------------------------------------
 */
-const postItem = async (inputProjeto, inputDescricao, inputInicio, inputFim, inputCategoria, inputGerente, inputStatus) => {
+const postItem = async (inputMarca, inputModelo, inputAno, inputValor) => {
   const formData = new FormData();
-  formData.append('nome', inputProjeto);
-  formData.append('descricao', inputDescricao);
-  formData.append('inicio', inputInicio);
-  formData.append('fim', inputFim);
-  formData.append('id_categoria', inputCategoria);
-  formData.append('id_gerente', inputGerente);
-  formData.append('id_status', inputStatus);
+  formData.append('marca', inputMarca);
+  formData.append('modelo', inputModelo);
+  formData.append('ano', inputAno);
+  formData.append('valor', inputValor);
 
-  let url = 'http://127.0.0.1:5000/projeto';
+  let url = 'http://127.0.0.1:5000/carro';
   fetch(url, {
     method: 'post',
     body: formData
@@ -76,10 +73,10 @@ const removeElement = () => {
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function () {
       let div = this.parentElement.parentElement;
-      const nomeItem = div.getElementsByTagName('td')[0].innerHTML
+      const id = div.getElementsByTagName('td')[0].innerHTML
       if (confirm("Você tem certeza?")) {
         div.remove()
-        deleteItem(nomeItem)
+        deleteItem(id)
         alert("Removido!")
       }
     }
@@ -88,12 +85,12 @@ const removeElement = () => {
 
 /*
   --------------------------------------------------------------------------------------
-  Função para deletar um projeto do servidor via requisição DELETE
+  Função para deletar um carro do servidor via requisição DELETE
   --------------------------------------------------------------------------------------
 */
 const deleteItem = (item) => {
   console.log(item)
-  let url = 'http://127.0.0.1:5000/projeto?nome=' + item;
+  let url = 'http://127.0.0.1:5000/carro?id=' + item;
   fetch(url, {
     method: 'delete'
   })
@@ -105,34 +102,31 @@ const deleteItem = (item) => {
 
 /*
   --------------------------------------------------------------------------------------
-  Função para adicionar um novo projeto
+  Função para adicionar um novo carro
   --------------------------------------------------------------------------------------
 */
 const newItem = () => {
-  let inputProjeto = document.getElementById("newProjeto").value;
-  let inputDescricao = document.getElementById("newDescricao").value;
-  let inputInicio = document.getElementById("newInicio").value;
-  let inputFim = document.getElementById("newFim").value;
-  let inputCategoria = document.getElementById("newCategoria").value;
-  let inputGerente = document.getElementById("newGerente").value;
-  let inputStatus = document.getElementById("newStatus").value;
+  let inputMarca = document.getElementById("newMarca").value;
+  let inputModelo = document.getElementById("newModelo").value;
+  let inputAno = document.getElementById("newAno").value;
+  let inputValor = document.getElementById("newValor").value;
 
-  if (inputProjeto === '') {
-    alert("O nome do Projeto é obrigatório");
+  if (inputMarca === '') {
+    alert("Os campos são obrigatórios");
   } else {
-    insertList(inputProjeto, inputDescricao, inputInicio, inputFim, inputCategoria, inputGerente, inputStatus)
-    postItem(inputProjeto, inputDescricao, inputInicio, inputFim, inputCategoria, inputGerente, inputStatus)
-    alert("Projeto adicionado!")
+    insertList("", inputMarca, inputModelo, inputAno, inputValor)
+    postItem(inputMarca, inputModelo, inputAno, inputValor)
+    alert("Carro adicionado!")
   }
 }
 
 /*
   --------------------------------------------------------------------------------------
-  Função para inserir projetos na lista apresentada
+  Função para inserir carros na lista apresentada
   --------------------------------------------------------------------------------------
 */
-const insertList = (nome, descricao, inicio, fim, categoria, gerente, status) => {
-  var item = [nome, descricao, inicio, fim, categoria, gerente, status]
+const insertList = (id, marca, modelo, ano, valor) => {
+  var item = [id, marca, modelo, ano, valor]
   var table = document.getElementById('myTable');
   var row = table.insertRow();
 
@@ -141,14 +135,12 @@ const insertList = (nome, descricao, inicio, fim, categoria, gerente, status) =>
     cel.textContent = item[i];
   }
   insertButton(row.insertCell(-1))
-  document.getElementById("newProjeto").value = "";
-  document.getElementById("newDescricao").value = "";
-  document.getElementById("newInicio").value = "";
-  document.getElementById("newFim").value = "";
-  document.getElementById("newCategoria").value = "";
-  document.getElementById("newGerente").value = "";
-  document.getElementById("newStatus").value = "";
-
+  document.getElementById("newMarca").value = "";
+  document.getElementById("newModelo").value = "";
+  document.getElementById("newAno").value = "";
+  document.getElementById("newValor").value = "";
+  document.getElementById("newValorEstimado").value = ""
+  
   removeElement()
 }
 
@@ -164,6 +156,7 @@ const getListMarcas = async () => {
   })
     .then((response) => response.json())
     .then((data) => {
+      insertListMarcas(0, "Selecione a marca")
       data.forEach(marca => insertListMarcas(marca.codigo, marca.nome))
     })
     .catch((error) => {
@@ -222,6 +215,7 @@ const getListModelos = async (marca) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      insertListModelos(0, "Selecione o modelo")
       data.modelos.forEach(modelo => insertListModelos(modelo.codigo, modelo.nome))
     })
     .catch((error) => {
@@ -256,7 +250,7 @@ modelosComboBox.addEventListener('change', function() {
 
 /*
   --------------------------------------------------------------------------------------
-  Função para popular combobox com os statuses dos projetos
+  Função para popular combobox com os anos disponíveis por modelo e marca
   --------------------------------------------------------------------------------------
 */
 const getListAnos = async (marca, modelo) => {
@@ -269,6 +263,7 @@ const getListAnos = async (marca, modelo) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      insertListAnos(0, "Selecione o ano")
       data.forEach(ano => insertListAnos(ano.codigo, ano.nome))
     })
     .catch((error) => {
@@ -302,7 +297,7 @@ anosComboBox.addEventListener('change', function() {
 
 /*
   --------------------------------------------------------------------------------------
-  Função para popular combobox com os statuses dos projetos
+  Função para preencher textbox com o valor estimado para o carro
   --------------------------------------------------------------------------------------
 */
 const getValorEstimado = async (marca, modelo, ano) => {

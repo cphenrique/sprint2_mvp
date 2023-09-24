@@ -22,9 +22,9 @@ carro_tag = Tag(name='Carro', description='Adição, visualização e remoção 
 
 @app.get('/', tags=[home_tag])
 def home():
-    """ Redireciona para /openapi, tela que permite a escolha o estilo de documentação.
+    """ Redireciona para /openapi/swagger, documentação das rotas no estilo swagger.
     """
-    return redirect('/openapi')
+    return redirect('/openapi/swagger')
 
 
 @app.post('/carro', tags=[carro_tag],
@@ -81,6 +81,36 @@ def get_carros():
         return apresenta_carros(carros), 200
     
 
+@app.put('/carro', tags=[carro_tag],
+            responses={"200": CarroViewSchema, "404": ErrorSchema})
+def put_carro(query: CarroBuscaSchema, form: CarroSchema):
+    """Edita um Carro a partir do id do carro informado
+
+    Retorna uma mensagem de confirmação da remoção.
+    """
+    carro_id = query.id
+    logger.debug(f"Coletando dados sobre carro #{carro_id}")
+    # criando conexão com a base
+    session = Session()
+    # fazendo a busca
+    carro = session.query(Carro).filter(Carro.id == carro_id).first()
+
+    if not carro:
+        # se o carro não foi encontrado
+        error_msg = "Carro não encontrado na base"
+        logger.warning(f"Erro ao editar carro #'{carro_id}', {error_msg}")
+        return {"mesage": error_msg}, 404
+    else:
+        # edita o carro e retorna a representação
+        logger.info("Alterando informações do carro: %s" % carro)
+        carro.marca=form.marca,
+        carro.modelo=form.modelo,
+        carro.ano=form.ano,
+        carro.valor=form.valor
+        session.commit()
+        return apresenta_carro(carro), 200
+        
+
 @app.delete('/carro', tags=[carro_tag],
             responses={"200": CarroDelSchema, "404": ErrorSchema})
 def del_carro(query: CarroBuscaSchema):
@@ -88,7 +118,6 @@ def del_carro(query: CarroBuscaSchema):
 
     Retorna uma mensagem de confirmação da remoção.
     """
-    #carro_id = unquote(unquote(query.id))
     carro_id = query.id
     logger.debug(f"Deletando dados sobre carro #{carro_id}")
     # criando conexão com a base

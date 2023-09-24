@@ -52,6 +52,7 @@ def apresenta_carros(carros: List[Carro]):
     for carro in carros:
         result.append(
             {
+                "id": carro.id,
                 "modelo": carro.modelo,
                 "marca": carro.marca,
                 "ano": carro.ano,

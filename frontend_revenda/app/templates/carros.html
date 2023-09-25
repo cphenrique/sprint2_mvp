@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    {% for carro in carros %}
+
+    <div class="card" style="width: 18rem;">
+        <img src="car.png" class="card-img-top" alt="img">
+        <div class="card-body">
+          <h4 class="card-title">{{ carro.response.Modelo }}/{{ carro.response.AnoModelo }}</h4>
+          <h5>{{ carro.response.Modelo }} ({{ carro.response.CodigoFipe }})</h5>
+          <p class="card-text">{{ carro.response.Combustivel }}</p>
+          <p class="card-text">Valor de venda {{ carro.valor }}</p>
+          <p class="card-text">Valor na tabela FIPE {{ carro.response.Valor }}</p>
+          <a href="#" class="btn btn-primary">Comprar</a>
+        </div>
+    </div>
+    
+    <hr>
+    
+    {% endfor %}
+
+</div>
+
+{% endblock %}

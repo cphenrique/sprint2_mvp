@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 from sqlalchemy.exc import IntegrityError
 
-from model import Session, Carro
+from model import Session, Carro, Compra
 from logger import logger
 from schemas import *
 from flask_cors import CORS
@@ -18,6 +18,7 @@ CORS(app)
 # definindo tags
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
 carro_tag = Tag(name='Carro', description='Adição, visualização e remoção de carros')
+compra_tag = Tag(name='Compra', description='Adição de compra')
 
 
 @app.get('/', tags=[home_tag])
@@ -69,7 +70,10 @@ def get_carros():
     # criando conexão com a base de dados
     session = Session()
     # realizando a busca
-    carros = session.query(Carro).all()
+    carros = session.query(Carro).\
+    outerjoin(Compra, Carro.id == Compra.carro_id).\
+    filter(Compra.id.is_(None)).all()
+
 
     if not carros:
         # se não há carros cadastrados
@@ -135,3 +139,54 @@ def del_carro(query: CarroBuscaSchema):
         error_msg = "Carro não encontrado na base"
         logger.warning(f"Erro ao deletar carro #'{carro_id}', {error_msg}")
         return {"mesage": error_msg}, 404
+
+
+@app.post('/compra', tags=[compra_tag],
+          responses={"200": CompraViewSchema, "409": ErrorSchema, "400": ErrorSchema})
+def add_compra(form: CompraSchema):
+    """ Adiciona uma nova compra de carro a base de dados.
+
+    Retorna para uma representação da compra.
+    """
+    compra = Compra(
+        carro_id=form.carro_id
+    )
+    logger.debug(f"Adicionando a compra '{compra.carro_id} na base de dados")
+    try:
+        # criando conexão com a base de dados
+        session = Session()
+        # adicionando projeto
+        session.add(compra)
+        # efetivando o comando de add novo item na tabela
+        session.commit()
+        logger.debug(f"{compra.carro_id} adicionado com sucesso.")
+        return apresenta_compra(compra), 200
+    
+    except Exception as e:
+        # tratamento de erros
+        error_msg = "Não foi possível adicionar a compra"
+        logger.warning(f"Erro ao adicionar a compra '{compra.id}', {error_msg}")
+        return {"message": error_msg}, 400
+    
+
+@app.get('/compras', tags=[compra_tag],
+         responses={"200": ListagemComprasSchema, "404": ErrorSchema})
+def get_compras():
+    """ Faz a busca por todas as Compras cadastradas na base de dados.
+
+    Retorna para uma representação das compras.
+    """
+    logger.debug(f"Coletando Compras")
+    # criando conexão com a base de dados
+    session = Session()
+    # realizando a busca
+    compras = session.query(Compra).all()
+
+    if not compras:
+        # se não há compras cadastradas
+        return {"compras": []}, 200
+    else:
+        logger.debug(f"%d Compras encontrados" % len(compras))
+        # retorna a representação da compra
+        print(compras)
+        return apresenta_compras(compras), 200

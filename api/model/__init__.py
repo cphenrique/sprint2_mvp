@@ -6,6 +6,7 @@ import os
 # importando os elementos definidos no modelo
 from model.base import Base
 from model.carro import Carro
+from model.compra import Compra
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)
 db_url = 'postgresql://postgres:1234@postgres-container:5432/revenda'

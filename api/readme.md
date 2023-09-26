@@ -1,12 +1,11 @@
-# GERPRO Gerenciador de projetos
+# Cadastro de carros para revenda
 
-GERPRO é uma ferramenta desenvolvida para auxiliar na gestão de projetos.
+CAdastro para registro de carros usados disponíveis para venda, consumindo dados da API da FIPE para consulta de valor médio de revenda.
 
 ## Features
 
-- Permite criar e deletar projetos;
-- Considera os campos de nome do projeto, descrição resumida, datas de início e fim estimado do projeto, Gerente resonsável, status atual e categoria;
-- Lista os projetos por ordem de cadastro, para permitir o acompanhamento individualizado;
+- Permite criar e deletar carros;
+- Considera os campos de marca, modelo, ano e valor de revenda;
 
 ## Tecnologias utilizadas
 
@@ -17,7 +16,7 @@ GERPRO é uma ferramenta desenvolvida para auxiliar na gestão de projetos.
 - HTML: Linguagem de markup do front-end;
 - Bootstrap: Framework que fornece estruturas de CSS para criação de aplicações front-end;
 - Javascript: Linguagem de programação de comportamento que permite a criação de conteúdo dinâmico;
-- SQLite: Banco de dados utilizado para persistência dos dados;
+- Postgres: Sistema gerenciados de banco de dados relacional utilizado para persistência dos dados;
 
 ## Instalação
 

@@ -28,11 +28,15 @@ Docker também é uma premissa para rodar os Dockerfile atribuídos a cada compo
 
 O sistema foi desenvolvido conforme imagem abaixo.
 
-O Componente C é responsável pela persistência dos dados do sistema.
-O Componente A1 é uma API desenvolvida em Flask e controla as rotas de leitura, inserção, deleção dos registros.
-O Componente A2 é uma pagina HTML com JavaScript responsável pela leitura e edição dos dados no banco de dados.
-O Componente A3 é uma visualização que simula um site de revenda dos veículos previamente cadastrados, utilizando apenas as rotas de leitura de carros e adição de transação de venda.
-O Componente B é uma API externa, grátis e sem chave de acesso, que disponibiliza informações de veículos (marcas, modelos, valores) capturados da tabela FIPE.
+![Alt text](Slide1.JPG)
+
+* O Componente C é responsável pela persistência dos dados do sistema.
+* O Componente A1 é uma API desenvolvida em Flask e controla as rotas de leitura, inserção, deleção dos registros de carros e compras.
+* O Componente A2 é uma pagina HTML com JavaScript responsável pela leitura e edição dos dados de carros no banco de dados.
+* O Componente A3 é uma visualização que simula um site de revenda dos veículos previamente cadastrados, utilizando apenas as rotas de leitura de carros e adição de transação de venda.
+* O Componente B é uma API externa, grátis e sem chave de acesso, que disponibiliza informações de veículos (marcas, modelos, valores) capturados da tabela FIPE.
+
+Os componentes C, A1 e A3 estão dentro de contâiners Docker.
 
 
 ### Componente C
@@ -119,11 +123,28 @@ O REPONSE resultante é utilizado nos componentes A2 e A3.
 Link de acesso: https://deividfortuna.github.io/fipe/ .
 
 
-### Utilização
+## Utilização
 
-### Cadastro 
+### Cadastro de carros
 
-Após execução dos passos de configuração e inicalização do serviço, basta executar o arquivo "index.html" dentro do diretório "front".
+Após execução dos passos de configuração e inicalização do serviço, basta executar o arquivo "index.html" dentro do diretório "frontend_cadastro".
+
+#### Adição
+
+![Alt text](image-2.png)
+
+O botão adicionar abre uma janela modal com um formulário que permite a adição de um novo carro.
+
+![Alt text](image-3.png)
+
+Deve-se observar a ordem de preenchimento, uma vez que as caixas de seleção são atualizadas sequencialmente.
+Primeiro a Marca, na sequencia o Modelo e finalmente o Ano.
+
+A adição é concluída a partir do clique no botão "Salvar" ao fim do formulário.
+
+#### Deleção
+
+
 
 ### Para listar os projetos
 

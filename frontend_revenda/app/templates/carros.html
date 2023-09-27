@@ -10,7 +10,7 @@
         <img src="{{ url_for('static', filename='car.jpg') }}" class="card-img-top" alt="img">
         <div class="card-body">
           <h4 class="card-title">{{ carro.response.Modelo }}/{{ carro.response.AnoModelo }}</h4>
-          <h5>{{ carro.response.Modelo }} ({{ carro.response.CodigoFipe }})</h5>
+          <h5>{{ carro.response.Marca }} ({{ carro.response.CodigoFipe }})</h5>
           <p class="card-text">{{ carro.response.Combustivel }}</p>
           <p class="card-text">Valor de venda {{ carro.valor }}</p>
           <p class="card-text">Valor na tabela FIPE {{ carro.response.Valor }}</p>
@@ -19,9 +19,7 @@
             <input type="hidden" name="carro_id" value="{{ carro.id }}" readonly>
             <button type="submit">Comprar</button>
           </form>
-          
-          <!--<a href="#" class="btn btn-primary">Comprar</a>-->
-        </div>
+      </div>
     </div>
     
     <hr>

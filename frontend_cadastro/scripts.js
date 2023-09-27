@@ -27,7 +27,7 @@ getList()
 
 /*
   --------------------------------------------------------------------------------------
-  Função para colocar um projeto no servidor via requisição POST
+  Função para colocar um carro no servidor via requisição POST
   --------------------------------------------------------------------------------------
 */
 const postItem = async (inputMarca, inputModelo, inputAno, inputValor) => {

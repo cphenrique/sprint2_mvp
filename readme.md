@@ -125,9 +125,10 @@ Link de acesso: https://deividfortuna.github.io/fipe/ .
 
 ## Utilização
 
-### Cadastro de carros
+### Cadastro de carros (Componente A2)
 
 Após execução dos passos de configuração e inicalização do serviço, basta executar o arquivo "index.html" dentro do diretório "frontend_cadastro".
+
 
 #### Adição
 
@@ -142,45 +143,22 @@ Primeiro a Marca, na sequencia o Modelo e finalmente o Ano.
 
 A adição é concluída a partir do clique no botão "Salvar" ao fim do formulário.
 
+
 #### Deleção
 
+Para deletar um carro, basta clicar no respectivo botão "del" e confirmar na mensagem de alerta.
+
+![Alt text](image-4.png)
 
 
-### Para listar os projetos
+### Site de revenda (Componente A3)
 
-1. Os projetos são listados por padrão na tela inicial, em formato de tabela e ordenados pela data de criação;
+A partir da execução do respectivo contâiner do Componente A3, podemos acessar o site de revenda no endereço abaixo.
 
-### Para inserir novo projeto
+http://127.0.0.1:5001/carros
 
-![Alt text](image-1.png)
+Para simular uma compra, basta clicar no botão "Comprar".
 
-1. Clicar no botão "Novo" para mostrar o formulário de cadastro de novos projetos;
+![Alt text](image-5.png)
 
-2. Registrar as informações do projeto:
-- Projeto: Nome do projeto, com até 100 caracteres;
-- Descrição: Descrição resumida do projeto, com até 4000 caracteres;
-- Início: Data de início do projeto, formato DD/MM/YYYY;
-- Fim: Data estimada de finalização do projeto, formato DD/MM/YYYY;
-- Categoria: Caixa de seleção, considerar observação abaixo;
-- Gerente do projeto: Caixa de seleção, considerar observação abaixo;
-- Status: Caixa de seleção, considerar observação abaixo;
-
-```
-Observação: O script de inicialização executa um arquivo python db_init.py que insere alguns registros de exemplo nas tabelas de apoio que populam as caixas de seleção. Caso o script não seja executado, faz-se necessário a inserção manual de registros nas tabelas de Categoria, Gerente e Status para que as caixas de seleção sejam preenchidas.
-```
-
-3. Clicar no botão "Adicionar" para incluir esse registro no banco de dados;
-
-4. O registro deve aparecer na tabela abaixo do formulário;
-
-### Para deletar um projeto
-
-![Alt text](image-2.png)
-
-1. Identificar a linha que precisa ser excluída;
-
-2. Clicar no botão "Del" referente a linha;
-
-3. Confirmar a ação na mensagem de alerta;
-
-4. O registro foi excluído no banco de dados e não deve aparecer na tabela após a atualização automática da tela;
+O não deve aparecer novamente no site, uma vez que filtramos pela API os carros que possuem um processo de compra.

@@ -190,3 +190,29 @@ def get_compras():
         # retorna a representação da compra
         print(compras)
         return apresenta_compras(compras), 200
+    
+
+@app.delete('/compra', tags=[compra_tag],
+            responses={"200": CompraDelSchema, "404": ErrorSchema})
+def del_compra(query: CompraBuscaSchema):
+    """Deleta um Compra a partir do id da compra informado
+
+    Retorna uma mensagem de confirmação da remoção.
+    """
+    compra_id = query.id
+    logger.debug(f"Deletando dados sobre compra #{compra_id}")
+    # criando conexão com a base
+    session = Session()
+    # fazendo a remoção
+    count = session.query(Compra).filter(Compra.id == compra_id).delete()
+    session.commit()
+
+    if count:
+        # retorna a representação da mensagem de confirmação
+        logger.debug(f"Deletado compra #{compra_id}")
+        return {"mesage": "Compra removida", "compra": compra_id}
+    else:
+        # se a compra não foi encontrado
+        error_msg = "Compra não encontrada na base"
+        logger.warning(f"Erro ao deletar compra #'{compra_id}', {error_msg}")
+        return {"mesage": error_msg}, 404

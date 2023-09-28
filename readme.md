@@ -161,4 +161,4 @@ Para simular uma compra, basta clicar no botão "Comprar".
 
 ![Alt text](image-5.png)
 
-O não deve aparecer novamente no site, uma vez que filtramos pela API os carros que possuem um processo de compra.
+O carro não deve aparecer mais no site, uma vez que filtramos pela API os carros que possuem um processo de compra.
